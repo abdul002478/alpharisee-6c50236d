@@ -1,0 +1,16 @@
+project_id = "wvzhlbgxpvhiirttwmcc"
+
+[functions.purchase]
+verify_jwt = true
+[functions.deposit-request]
+verify_jwt = true
+[functions.withdraw-request]
+verify_jwt = true
+[functions.spin]
+verify_jwt = true
+[functions.admin-action]
+verify_jwt = true
+[functions.credit-yields]
+verify_jwt = false
+[functions.setup-admin]
+verify_jwt = false
