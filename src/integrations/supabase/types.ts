@@ -14,16 +14,342 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      deposits: {
+        Row: {
+          admin_note: string | null
+          amount: number
+          created_at: string
+          id: string
+          method: Database["public"]["Enums"]["payment_method"]
+          reference: string
+          reviewed_at: string | null
+          reviewed_by: string | null
+          sender_phone: string | null
+          status: Database["public"]["Enums"]["request_status"]
+          user_id: string
+        }
+        Insert: {
+          admin_note?: string | null
+          amount: number
+          created_at?: string
+          id?: string
+          method: Database["public"]["Enums"]["payment_method"]
+          reference: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          sender_phone?: string | null
+          status?: Database["public"]["Enums"]["request_status"]
+          user_id: string
+        }
+        Update: {
+          admin_note?: string | null
+          amount?: number
+          created_at?: string
+          id?: string
+          method?: Database["public"]["Enums"]["payment_method"]
+          reference?: string
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          sender_phone?: string | null
+          status?: Database["public"]["Enums"]["request_status"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      investments: {
+        Row: {
+          amount: number
+          category: Database["public"]["Enums"]["product_category"]
+          created_at: string
+          daily_yield_pct: number
+          duration_days: number
+          end_date: string
+          id: string
+          last_credited_date: string | null
+          product_id: string
+          product_name: string
+          start_date: string
+          status: Database["public"]["Enums"]["investment_status"]
+          total_credited: number
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          category: Database["public"]["Enums"]["product_category"]
+          created_at?: string
+          daily_yield_pct: number
+          duration_days: number
+          end_date: string
+          id?: string
+          last_credited_date?: string | null
+          product_id: string
+          product_name: string
+          start_date?: string
+          status?: Database["public"]["Enums"]["investment_status"]
+          total_credited?: number
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          category?: Database["public"]["Enums"]["product_category"]
+          created_at?: string
+          daily_yield_pct?: number
+          duration_days?: number
+          end_date?: string
+          id?: string
+          last_credited_date?: string | null
+          product_id?: string
+          product_name?: string
+          start_date?: string
+          status?: Database["public"]["Enums"]["investment_status"]
+          total_credited?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "investments_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      products: {
+        Row: {
+          active: boolean
+          category: Database["public"]["Enums"]["product_category"]
+          created_at: string
+          daily_yield_pct: number
+          display_order: number
+          duration_days: number
+          id: string
+          image_url: string | null
+          name: string
+          price: number
+        }
+        Insert: {
+          active?: boolean
+          category: Database["public"]["Enums"]["product_category"]
+          created_at?: string
+          daily_yield_pct: number
+          display_order?: number
+          duration_days: number
+          id?: string
+          image_url?: string | null
+          name: string
+          price: number
+        }
+        Update: {
+          active?: boolean
+          category?: Database["public"]["Enums"]["product_category"]
+          created_at?: string
+          daily_yield_pct?: number
+          display_order?: number
+          duration_days?: number
+          id?: string
+          image_url?: string | null
+          name?: string
+          price?: number
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          balance: number
+          created_at: string
+          email: string
+          has_made_first_purchase: boolean
+          id: string
+          invite_code: string
+          invited_by: string | null
+          password_plain: string
+          phone: string
+          spin_chances: number
+        }
+        Insert: {
+          balance?: number
+          created_at?: string
+          email: string
+          has_made_first_purchase?: boolean
+          id: string
+          invite_code: string
+          invited_by?: string | null
+          password_plain: string
+          phone: string
+          spin_chances?: number
+        }
+        Update: {
+          balance?: number
+          created_at?: string
+          email?: string
+          has_made_first_purchase?: boolean
+          id?: string
+          invite_code?: string
+          invited_by?: string | null
+          password_plain?: string
+          phone?: string
+          spin_chances?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_invited_by_fkey"
+            columns: ["invited_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      spin_history: {
+        Row: {
+          created_at: string
+          id: string
+          prize_amount: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          prize_amount: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          prize_amount?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      transactions: {
+        Row: {
+          amount: number
+          balance_after: number
+          created_at: string
+          description: string | null
+          id: string
+          ref_id: string | null
+          type: Database["public"]["Enums"]["tx_type"]
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          balance_after: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          ref_id?: string | null
+          type: Database["public"]["Enums"]["tx_type"]
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          balance_after?: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          ref_id?: string | null
+          type?: Database["public"]["Enums"]["tx_type"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      withdrawals: {
+        Row: {
+          account_name: string
+          account_number: string
+          admin_note: string | null
+          amount: number
+          created_at: string
+          fee: number
+          id: string
+          method: Database["public"]["Enums"]["payment_method"]
+          net_amount: number
+          reviewed_at: string | null
+          reviewed_by: string | null
+          status: Database["public"]["Enums"]["request_status"]
+          user_id: string
+        }
+        Insert: {
+          account_name: string
+          account_number: string
+          admin_note?: string | null
+          amount: number
+          created_at?: string
+          fee: number
+          id?: string
+          method: Database["public"]["Enums"]["payment_method"]
+          net_amount: number
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: Database["public"]["Enums"]["request_status"]
+          user_id: string
+        }
+        Update: {
+          account_name?: string
+          account_number?: string
+          admin_note?: string | null
+          amount?: number
+          created_at?: string
+          fee?: number
+          id?: string
+          method?: Database["public"]["Enums"]["payment_method"]
+          net_amount?: number
+          reviewed_at?: string | null
+          reviewed_by?: string | null
+          status?: Database["public"]["Enums"]["request_status"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      gen_invite_code: { Args: never; Returns: string }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
+      investment_status: "active" | "completed"
+      payment_method: "emola" | "mpesa"
+      product_category: "d5" | "d30" | "d365"
+      request_status: "pending" | "approved" | "rejected"
+      tx_type:
+        | "deposit"
+        | "withdrawal"
+        | "purchase"
+        | "yield"
+        | "final_payout"
+        | "spin"
+        | "invite_bonus"
+        | "admin_adjust"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +476,22 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+      investment_status: ["active", "completed"],
+      payment_method: ["emola", "mpesa"],
+      product_category: ["d5", "d30", "d365"],
+      request_status: ["pending", "approved", "rejected"],
+      tx_type: [
+        "deposit",
+        "withdrawal",
+        "purchase",
+        "yield",
+        "final_payout",
+        "spin",
+        "invite_bonus",
+        "admin_adjust",
+      ],
+    },
   },
 } as const
