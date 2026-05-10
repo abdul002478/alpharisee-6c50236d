@@ -19,6 +19,7 @@ function Admin() {
   const [users, setUsers] = useState<any[]>([]);
   const [deposits, setDeposits] = useState<any[]>([]);
   const [withdrawals, setWithdrawals] = useState<any[]>([]);
+  const [investments, setInvestments] = useState<any[]>([]);
 
   const callAdmin = async (action: string, payload: any = {}) => {
     const { data, error } = await supabase.functions.invoke("admin-action", { body: { action, payload }});
@@ -30,6 +31,7 @@ function Admin() {
     const u = await callAdmin("list_users"); if (u) setUsers((u as any).users ?? []);
     const d = await callAdmin("list_deposits"); if (d) setDeposits((d as any).deposits ?? []);
     const w = await callAdmin("list_withdrawals"); if (w) setWithdrawals((w as any).withdrawals ?? []);
+    const i = await callAdmin("list_investments"); if (i) setInvestments((i as any).investments ?? []);
   };
 
   useEffect(() => {
@@ -57,9 +59,10 @@ function Admin() {
       </header>
       <div className="max-w-4xl mx-auto">
         <Tabs defaultValue="deposits">
-          <TabsList className="grid grid-cols-3 w-full">
+          <TabsList className="grid grid-cols-4 w-full">
             <TabsTrigger value="deposits">Depósitos</TabsTrigger>
             <TabsTrigger value="withdrawals">Saques</TabsTrigger>
+            <TabsTrigger value="mining">Mineração</TabsTrigger>
             <TabsTrigger value="users">Usuários</TabsTrigger>
           </TabsList>
 
@@ -103,6 +106,24 @@ function Admin() {
                     <Button size="sm" variant="destructive" onClick={() => reject("withdrawal", w.id)}>Rejeitar (reembolsa)</Button>
                   </div>
                 )}
+              </Card>
+            ))}
+          </TabsContent>
+
+          <TabsContent value="mining" className="space-y-2 mt-4">
+            {investments.length === 0 && <p className="text-sm text-muted-foreground">Sem produtos comprados ainda.</p>}
+            {investments.map((i) => (
+              <Card key={i.id} className="p-3">
+                <div className="flex justify-between items-start text-sm">
+                  <div>
+                    <p className="font-semibold">{i.product_name} <span className="text-xs text-muted-foreground">({i.category})</span></p>
+                    <p className="text-xs"><span className="text-muted-foreground">Comprador:</span> {i.profiles?.email} · {i.profiles?.phone}</p>
+                    <p className="text-xs"><span className="text-muted-foreground">Valor:</span> <span className="font-bold text-gold">{Number(i.amount).toFixed(2)} MT</span> · {i.daily_yield_pct}%/dia · {i.duration_days}d</p>
+                    <p className="text-xs"><span className="text-muted-foreground">Creditado:</span> {Number(i.total_credited).toFixed(2)} MT · {i.start_date} → {i.end_date}</p>
+                    <p className="text-[10px] text-muted-foreground">{new Date(i.created_at).toLocaleString("pt-PT")}</p>
+                  </div>
+                  <span className={`text-xs px-2 py-1 rounded ${i.status==="active"?"bg-success/20 text-success":"bg-muted text-muted-foreground"}`}>{i.status}</span>
+                </div>
               </Card>
             ))}
           </TabsContent>

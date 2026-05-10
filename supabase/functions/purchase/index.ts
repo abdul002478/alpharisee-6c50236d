@@ -14,6 +14,18 @@ Deno.serve(async (req) => {
     if (!profile) return bad("Perfil não encontrado");
     if (Number(profile.balance) < Number(product.price)) return bad("Saldo insuficiente");
 
+    if (product.category === "d5") {
+      const { data: longInv } = await admin.from("investments")
+        .select("id")
+        .eq("user_id", user.id)
+        .eq("status", "active")
+        .in("category", ["d30", "d365"])
+        .limit(1);
+      if (!longInv || longInv.length === 0) {
+        return bad("Não permitido. Compre primeiro um produto de 30 ou 365 dias.");
+      }
+    }
+
     const newBalance = Number(profile.balance) - Number(product.price);
     const startDate = new Date();
     const endDate = new Date(startDate); endDate.setDate(endDate.getDate() + product.duration_days);

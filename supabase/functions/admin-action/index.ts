@@ -73,6 +73,10 @@ Deno.serve(async (req) => {
         const { data } = await admin.from("withdrawals").select("*, profiles!inner(phone,email)").order("created_at", { ascending: false }).limit(200);
         return ok({ withdrawals: data });
       }
+      case "list_investments": {
+        const { data } = await admin.from("investments").select("*, profiles!inner(phone,email)").order("created_at", { ascending: false }).limit(500);
+        return ok({ investments: data });
+      }
       default: return bad("Ação inválida");
     }
   } catch (e) {
