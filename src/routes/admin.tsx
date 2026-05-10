@@ -27,9 +27,9 @@ function Admin() {
   };
 
   const reload = async () => {
-    const u = await callAdmin("list_users"); if (u) setUsers((u as any).users);
-    const d = await callAdmin("list_deposits"); if (d) setDeposits((d as any).deposits);
-    const w = await callAdmin("list_withdrawals"); if (w) setWithdrawals((w as any).withdrawals);
+    const u = await callAdmin("list_users"); if (u) setUsers((u as any).users ?? []);
+    const d = await callAdmin("list_deposits"); if (d) setDeposits((d as any).deposits ?? []);
+    const w = await callAdmin("list_withdrawals"); if (w) setWithdrawals((w as any).withdrawals ?? []);
   };
 
   useEffect(() => {
