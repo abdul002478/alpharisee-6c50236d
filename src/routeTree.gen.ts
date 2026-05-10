@@ -14,6 +14,7 @@ import { Route as SpinRouteImport } from './routes/spin'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as MiningRouteImport } from './routes/mining'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as InviteRouteImport } from './routes/invite'
 import { Route as HistoryRouteImport } from './routes/history'
 import { Route as DepositRouteImport } from './routes/deposit'
 import { Route as AdminRouteImport } from './routes/admin'
@@ -44,6 +45,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InviteRoute = InviteRouteImport.update({
+  id: '/invite',
+  path: '/invite',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HistoryRoute = HistoryRouteImport.update({
   id: '/history',
   path: '/history',
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/deposit': typeof DepositRoute
   '/history': typeof HistoryRoute
+  '/invite': typeof InviteRoute
   '/login': typeof LoginRoute
   '/mining': typeof MiningRoute
   '/signup': typeof SignupRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/deposit': typeof DepositRoute
   '/history': typeof HistoryRoute
+  '/invite': typeof InviteRoute
   '/login': typeof LoginRoute
   '/mining': typeof MiningRoute
   '/signup': typeof SignupRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/deposit': typeof DepositRoute
   '/history': typeof HistoryRoute
+  '/invite': typeof InviteRoute
   '/login': typeof LoginRoute
   '/mining': typeof MiningRoute
   '/signup': typeof SignupRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/deposit'
     | '/history'
+    | '/invite'
     | '/login'
     | '/mining'
     | '/signup'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/deposit'
     | '/history'
+    | '/invite'
     | '/login'
     | '/mining'
     | '/signup'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/deposit'
     | '/history'
+    | '/invite'
     | '/login'
     | '/mining'
     | '/signup'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   DepositRoute: typeof DepositRoute
   HistoryRoute: typeof HistoryRoute
+  InviteRoute: typeof InviteRoute
   LoginRoute: typeof LoginRoute
   MiningRoute: typeof MiningRoute
   SignupRoute: typeof SignupRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/invite': {
+      id: '/invite'
+      path: '/invite'
+      fullPath: '/invite'
+      preLoaderRoute: typeof InviteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/history': {
       id: '/history'
       path: '/history'
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   DepositRoute: DepositRoute,
   HistoryRoute: HistoryRoute,
+  InviteRoute: InviteRoute,
   LoginRoute: LoginRoute,
   MiningRoute: MiningRoute,
   SignupRoute: SignupRoute,
@@ -229,3 +250,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

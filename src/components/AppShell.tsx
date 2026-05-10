@@ -1,6 +1,6 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import { useAuth } from "@/lib/auth-context";
-import { Home, History, Pickaxe, ArrowDownToLine, ArrowUpFromLine, Sparkles, Shield, LogOut } from "lucide-react";
+import { Home, History, Pickaxe, ArrowDownToLine, ArrowUpFromLine, Sparkles, Shield, LogOut, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -10,6 +10,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const tabs = [
     { to: "/", label: "Início", icon: Home },
     { to: "/mining", label: "Mineração", icon: Pickaxe },
+    { to: "/invite", label: "Convidar", icon: Gift },
     { to: "/spin", label: "Roleta", icon: Sparkles },
     { to: "/history", label: "Histórico", icon: History },
   ];
@@ -32,7 +33,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       </header>
       <main className="max-w-2xl mx-auto px-4 py-4">{children}</main>
       <nav className="fixed bottom-0 inset-x-0 bg-card border-t border-border z-30">
-        <div className="max-w-2xl mx-auto grid grid-cols-4">
+        <div className="max-w-2xl mx-auto grid grid-cols-5">
           {tabs.map((t) => {
             const active = loc.pathname === t.to;
             const Icon = t.icon;
