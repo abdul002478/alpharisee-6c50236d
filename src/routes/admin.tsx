@@ -59,9 +59,10 @@ function Admin() {
       </header>
       <div className="max-w-4xl mx-auto">
         <Tabs defaultValue="deposits">
-          <TabsList className="grid grid-cols-3 w-full">
+          <TabsList className="grid grid-cols-4 w-full">
             <TabsTrigger value="deposits">Depósitos</TabsTrigger>
             <TabsTrigger value="withdrawals">Saques</TabsTrigger>
+            <TabsTrigger value="mining">Mineração</TabsTrigger>
             <TabsTrigger value="users">Usuários</TabsTrigger>
           </TabsList>
 
