@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
-import { TrendingUp } from "lucide-react";
+import { TrendingUp, Eye, EyeOff } from "lucide-react";
 
 export const Route = createFileRoute("/login")({ component: Login });
 
@@ -14,6 +14,7 @@ function Login() {
   const nav = useNavigate();
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+  const [showPwd, setShowPwd] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const submit = async (e: React.FormEvent) => {
@@ -49,7 +50,22 @@ function Login() {
           </div>
           <div>
             <Label>Senha</Label>
-            <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <div className="relative">
+              <Input
+                type={showPwd ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="pr-10"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPwd((v) => !v)}
+                className="absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground hover:text-foreground"
+                tabIndex={-1}
+              >
+                {showPwd ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
+            </div>
           </div>
           <Button type="submit" disabled={loading} className="w-full bg-gradient-gold text-primary-foreground font-semibold shadow-gold">
             {loading ? "..." : "Entrar"}

@@ -42,6 +42,7 @@ function Withdraw() {
       <Card className="p-4 mb-4 bg-gradient-card">
         <p className="text-sm">Saldo disponível: <span className="font-bold text-gold">{(profile?.balance ?? 0).toFixed(2)} MT</span></p>
         <p className="text-xs text-muted-foreground mt-1">Mínimo 150 MT · Taxa 5% · Requer pelo menos 1 produto ativo</p>
+        <p className="text-xs text-muted-foreground mt-1">Horário de saque: Segunda a Sexta, 08:30 às 18:00 · Processamento até 12h</p>
       </Card>
       <form onSubmit={submit} className="space-y-3">
         <div className="grid grid-cols-2 gap-2">

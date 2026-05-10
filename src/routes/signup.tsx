@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
-import { TrendingUp } from "lucide-react";
+import { TrendingUp, Eye, EyeOff } from "lucide-react";
 
 export const Route = createFileRoute("/signup")({
   component: Signup,
@@ -19,6 +19,9 @@ function Signup() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPwd, setShowPwd] = useState(false);
+  const [showPwd2, setShowPwd2] = useState(false);
   const [inviteCode, setInviteCode] = useState(ref);
   const [loading, setLoading] = useState(false);
 
@@ -27,6 +30,7 @@ function Signup() {
     if (!/^[0-9]{9}$/.test(phone)) return toast.error("Número de Moçambique inválido (9 dígitos)");
     if (!/^[\w.+-]+@gmail\.com$/i.test(email)) return toast.error("Use um Gmail válido");
     if (password.length < 6) return toast.error("Senha mínima de 6 caracteres");
+    if (password !== confirmPassword) return toast.error("As senhas não coincidem");
     setLoading(true);
     const { error } = await supabase.auth.signUp({
       email,
@@ -54,7 +58,18 @@ function Signup() {
         <form onSubmit={submit} className="space-y-4">
           <div>
             <Label>Número de Moçambique</Label>
-            <Input value={phone} onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))} placeholder="84xxxxxxx" maxLength={9} />
+            <div className="flex">
+              <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-input bg-muted text-sm text-muted-foreground font-medium">
+                +258
+              </span>
+              <Input
+                value={phone}
+                onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
+                placeholder="84xxxxxxx"
+                maxLength={9}
+                className="rounded-l-none"
+              />
+            </div>
           </div>
           <div>
             <Label>Gmail</Label>
@@ -62,7 +77,41 @@ function Signup() {
           </div>
           <div>
             <Label>Senha</Label>
-            <Input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <div className="relative">
+              <Input
+                type={showPwd ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="pr-10"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPwd((v) => !v)}
+                className="absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground hover:text-foreground"
+                tabIndex={-1}
+              >
+                {showPwd ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
+            </div>
+          </div>
+          <div>
+            <Label>Confirmar senha</Label>
+            <div className="relative">
+              <Input
+                type={showPwd2 ? "text" : "password"}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="pr-10"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPwd2((v) => !v)}
+                className="absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground hover:text-foreground"
+                tabIndex={-1}
+              >
+                {showPwd2 ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              </button>
+            </div>
           </div>
           <div>
             <Label>Código de convite (opcional)</Label>
