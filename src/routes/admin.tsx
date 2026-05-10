@@ -19,6 +19,7 @@ function Admin() {
   const [users, setUsers] = useState<any[]>([]);
   const [deposits, setDeposits] = useState<any[]>([]);
   const [withdrawals, setWithdrawals] = useState<any[]>([]);
+  const [investments, setInvestments] = useState<any[]>([]);
 
   const callAdmin = async (action: string, payload: any = {}) => {
     const { data, error } = await supabase.functions.invoke("admin-action", { body: { action, payload }});
@@ -30,6 +31,7 @@ function Admin() {
     const u = await callAdmin("list_users"); if (u) setUsers((u as any).users ?? []);
     const d = await callAdmin("list_deposits"); if (d) setDeposits((d as any).deposits ?? []);
     const w = await callAdmin("list_withdrawals"); if (w) setWithdrawals((w as any).withdrawals ?? []);
+    const i = await callAdmin("list_investments"); if (i) setInvestments((i as any).investments ?? []);
   };
 
   useEffect(() => {
