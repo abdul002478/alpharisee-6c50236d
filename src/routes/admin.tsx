@@ -110,6 +110,24 @@ function Admin() {
             ))}
           </TabsContent>
 
+          <TabsContent value="mining" className="space-y-2 mt-4">
+            {investments.length === 0 && <p className="text-sm text-muted-foreground">Sem produtos comprados ainda.</p>}
+            {investments.map((i) => (
+              <Card key={i.id} className="p-3">
+                <div className="flex justify-between items-start text-sm">
+                  <div>
+                    <p className="font-semibold">{i.product_name} <span className="text-xs text-muted-foreground">({i.category})</span></p>
+                    <p className="text-xs"><span className="text-muted-foreground">Comprador:</span> {i.profiles?.email} · {i.profiles?.phone}</p>
+                    <p className="text-xs"><span className="text-muted-foreground">Valor:</span> <span className="font-bold text-gold">{Number(i.amount).toFixed(2)} MT</span> · {i.daily_yield_pct}%/dia · {i.duration_days}d</p>
+                    <p className="text-xs"><span className="text-muted-foreground">Creditado:</span> {Number(i.total_credited).toFixed(2)} MT · {i.start_date} → {i.end_date}</p>
+                    <p className="text-[10px] text-muted-foreground">{new Date(i.created_at).toLocaleString("pt-PT")}</p>
+                  </div>
+                  <span className={`text-xs px-2 py-1 rounded ${i.status==="active"?"bg-success/20 text-success":"bg-muted text-muted-foreground"}`}>{i.status}</span>
+                </div>
+              </Card>
+            ))}
+          </TabsContent>
+
           <TabsContent value="users" className="space-y-2 mt-4">
             {users.map((u) => <UserRow key={u.id} u={u} onSaved={reload} callAdmin={callAdmin}/>)}
           </TabsContent>
