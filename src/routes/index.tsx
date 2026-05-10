@@ -71,62 +71,38 @@ function Index() {
           <TabsTrigger value="d365">365 dias</TabsTrigger>
         </TabsList>
         {(["d5","d30","d365"] as const).map((c) => (
-          <TabsContent key={c} value={c} className="space-y-3 mt-4">
-            <p className="text-sm text-muted-foreground">{CAT_INFO[c].desc}</p>
-            {byCat(c).map((p) => {
-              const dailyReturn = (p.price * p.daily_yield_pct) / 100;
-              const total = c === "d5" ? p.price * p.daily_yield_pct / 100 * p.duration_days : dailyReturn * p.duration_days;
-              return (
-                <Card key={p.id} className="p-4 bg-gradient-card shadow-card border-border">
-                  <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <h3 className="font-bold text-foreground">{p.name}</h3>
-                      <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
-                        <Clock className="w-3 h-3"/> {p.duration_days} dias · {p.daily_yield_pct}% / dia
+          <TabsContent key={c} value={c} className="mt-4">
+            <div className="grid grid-cols-2 gap-3">
+              {byCat(c).map((p) => {
+                const dailyReturn = (p.price * p.daily_yield_pct) / 100;
+                const total = c === "d5" ? p.price * p.daily_yield_pct / 100 * p.duration_days : dailyReturn * p.duration_days;
+                return (
+                  <Card key={p.id} className="p-3 bg-gradient-card shadow-card border-border">
+                    <div className="mb-2">
+                      <h3 className="font-bold text-foreground text-sm leading-tight">{p.name}</h3>
+                      <p className="text-[10px] text-muted-foreground flex items-center gap-1 mt-1">
+                        <Clock className="w-3 h-3"/> {p.duration_days}d · {p.daily_yield_pct}%/dia
                       </p>
                     </div>
-                    <div className={`px-2 py-1 rounded-md text-xs font-semibold bg-gradient-to-r ${CAT_INFO[c].color} text-white`}>
+                    <div className={`inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-gradient-to-r ${CAT_INFO[c].color} text-white mb-2`}>
                       {CAT_INFO[c].label}
                     </div>
-                  </div>
-                  <div className="grid grid-cols-3 gap-2 text-center mb-3">
-                    <div className="bg-muted/40 rounded-lg p-2">
-                      <p className="text-[10px] text-muted-foreground">Preço</p>
-                      <p className="font-bold text-foreground">{p.price.toFixed(0)} MT</p>
+                    <div className="space-y-1 mb-2 text-[11px]">
+                      <div className="flex justify-between"><span className="text-muted-foreground">Preço</span><span className="font-bold">{p.price.toFixed(0)} MT</span></div>
+                      <div className="flex justify-between"><span className="text-muted-foreground">{c === "d5" ? "Total/dia" : "Diário"}</span><span className="font-bold text-success">{dailyReturn.toFixed(0)} MT</span></div>
+                      <div className="flex justify-between"><span className="text-muted-foreground">Total</span><span className="font-bold text-gold">{total.toFixed(0)} MT</span></div>
                     </div>
-                    <div className="bg-muted/40 rounded-lg p-2">
-                      <p className="text-[10px] text-muted-foreground">{c === "d5" ? "Total/dia" : "Diário"}</p>
-                      <p className="font-bold text-success">{dailyReturn.toFixed(0)} MT</p>
-                    </div>
-                    <div className="bg-muted/40 rounded-lg p-2">
-                      <p className="text-[10px] text-muted-foreground">Total</p>
-                      <p className="font-bold text-gold">{total.toFixed(0)} MT</p>
-                    </div>
-                  </div>
-                  <Button onClick={() => buy(p)} disabled={buying === p.id || (profile?.balance ?? 0) < p.price}
-                    className="w-full bg-gradient-gold text-primary-foreground font-semibold">
-                    <TrendingUp className="w-4 h-4 mr-1"/>{buying === p.id ? "A comprar..." : "Comprar"}
-                  </Button>
-                </Card>
-              );
-            })}
+                    <Button onClick={() => buy(p)} disabled={buying === p.id || (profile?.balance ?? 0) < p.price}
+                      size="sm" className="w-full bg-gradient-gold text-primary-foreground font-semibold text-xs h-8">
+                      <TrendingUp className="w-3 h-3 mr-1"/>{buying === p.id ? "..." : "Comprar"}
+                    </Button>
+                  </Card>
+                );
+              })}
+            </div>
           </TabsContent>
         ))}
       </Tabs>
-
-      {profile && (
-        <Card className="p-4 mt-4 bg-card">
-          <p className="text-xs text-muted-foreground mb-1">Seu código de convite</p>
-          <div className="flex items-center justify-between">
-            <p className="font-mono font-bold text-gold text-lg">{profile.invite_code}</p>
-            <Button size="sm" variant="outline" onClick={() => {
-              const link = `${window.location.origin}/signup?ref=${profile.invite_code}`;
-              navigator.clipboard.writeText(link); toast.success("Link copiado!");
-            }}>Copiar link</Button>
-          </div>
-          <p className="text-xs text-muted-foreground mt-2">Ganhe 18% da primeira compra do convidado + 1 chance na roleta.</p>
-        </Card>
-      )}
     </AppShell>
   );
 }
