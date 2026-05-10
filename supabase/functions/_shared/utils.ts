@@ -23,7 +23,10 @@ export function getAdminClient() {
 
 export async function requireUser(req: Request) {
   const sb = getUserClient(req);
-  const { data: { user } } = await sb.auth.getUser();
+  const auth = req.headers.get("Authorization") || "";
+  const token = auth.replace(/^Bearer\s+/i, "");
+  const admin = getAdminClient();
+  const { data: { user } } = await admin.auth.getUser(token);
   if (!user) throw new Response(JSON.stringify({ error: "Não autenticado" }), { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } });
   return { user, sb };
 }
