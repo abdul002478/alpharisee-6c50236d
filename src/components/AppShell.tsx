@@ -24,8 +24,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <p className="text-lg font-bold text-gold">{(profile?.balance ?? 0).toFixed(2)} MT</p>
           </div>
           <div className="flex items-center gap-2">
-            <Link to="/deposit"><Button size="sm" variant="secondary"><ArrowDownToLine className="w-4 h-4 mr-1"/>Depositar</Button></Link>
-            <Link to="/withdraw"><Button size="sm" className="bg-gradient-gold text-primary-foreground"><ArrowUpFromLine className="w-4 h-4 mr-1"/>Sacar</Button></Link>
+            <Link to="/deposit"><Button size="sm" variant={loc.pathname==="/deposit"?"default":"secondary"} className={loc.pathname==="/deposit"?"bg-gradient-gold text-primary-foreground":""}><ArrowDownToLine className="w-4 h-4 mr-1"/>Depositar</Button></Link>
+            <Link to="/withdraw"><Button size="sm" variant={loc.pathname==="/withdraw"?"default":"secondary"} className={loc.pathname==="/withdraw"?"bg-gradient-gold text-primary-foreground":""}><ArrowUpFromLine className="w-4 h-4 mr-1"/>Sacar</Button></Link>
             {isAdmin && <Link to="/admin"><Button size="icon" variant="outline"><Shield className="w-4 h-4"/></Button></Link>}
             <Button size="icon" variant="ghost" onClick={signOut}><LogOut className="w-4 h-4"/></Button>
           </div>
