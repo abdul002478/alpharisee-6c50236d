@@ -7,7 +7,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Clock, TrendingUp, Coins } from "lucide-react";
+import { Clock, TrendingUp, Coins, MessageCircle, Info } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+
+const WHATSAPP_MANAGER = "https://chat.whatsapp.com/KHn1AyGbd4o1nOg6Q0xtju";
 
 export const Route = createFileRoute("/")({ component: Index });
 
