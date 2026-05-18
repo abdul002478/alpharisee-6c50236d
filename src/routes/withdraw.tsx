@@ -52,7 +52,7 @@ function Withdraw() {
         <div><Label>Valor a sacar (MT)</Label><Input type="number" min={180} value={amount} onChange={e=>setAmount(e.target.value)} required/></div>
         <div><Label>Número da conta</Label><Input value={number} onChange={e=>setNumber(e.target.value)} required/></div>
         <div><Label>Nome da conta</Label><Input value={name} onChange={e=>setName(e.target.value)} required/></div>
-        {Number(amount) >= 150 && (
+        {Number(amount) >= 180 && (
           <Card className="p-3 text-sm bg-muted/40">
             <p>Taxa (5%): <span className="font-bold">{fee.toFixed(2)} MT</span></p>
             <p>Recebe: <span className="font-bold text-success">{net.toFixed(2)} MT</span></p>
