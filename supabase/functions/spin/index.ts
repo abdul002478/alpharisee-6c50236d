@@ -1,8 +1,8 @@
 import { preflight, requireUser, getAdminClient, ok, bad } from "../_shared/utils.ts";
 
 // Visual prizes shown on wheel (8 slots), but real outcome is always < 100 MT
-const VISUAL_PRIZES = [25, 50, 75, 95, 150, 300, 500, 760];
-const REAL_PRIZES = [25, 35, 50, 60, 75, 85, 95, 99]; // always < 100
+const VISUAL_PRIZES = [20, 250, 40, 500, 60, 1000, 80, 99];
+const REAL_PRIZES = [20, 40, 60, 80, 99]; // always < 100
 
 Deno.serve(async (req) => {
   const pf = preflight(req); if (pf) return pf;
