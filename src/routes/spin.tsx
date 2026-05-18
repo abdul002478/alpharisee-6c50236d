@@ -10,8 +10,8 @@ import { Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/spin")({ component: Spin });
 
-const VISUAL = [25, 50, 75, 95, 150, 300, 500, 760];
-const COLORS = ["#f59e0b","#10b981","#f59e0b","#10b981","#f59e0b","#10b981","#f59e0b","#10b981"];
+const VISUAL = [20, 250, 40, 500, 60, 1000, 80, 99];
+const COLORS = ["#fbbf24","#dc2626","#fbbf24","#dc2626","#fbbf24","#dc2626","#fbbf24","#dc2626"];
 
 function Spin() {
   const { profile, refresh } = useAuth();

@@ -5,7 +5,7 @@ Deno.serve(async (req) => {
   try {
     const { user } = await requireUser(req);
     const { amount, method, account_number, account_name } = await req.json();
-    if (!amount || amount < 150) return bad("Saque mínimo é 150 MT");
+    if (!amount || amount < 180) return bad("Saque mínimo é 180 MT");
     if (!["emola","mpesa"].includes(method)) return bad("Método inválido");
     if (!account_number || !account_name) return bad("Dados da conta obrigatórios");
 

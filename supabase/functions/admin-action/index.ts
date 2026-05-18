@@ -66,16 +66,28 @@ Deno.serve(async (req) => {
         return ok({ users: data });
       }
       case "list_deposits": {
-        const { data } = await admin.from("deposits").select("*, profiles!inner(phone,email)").order("created_at", { ascending: false }).limit(200);
-        return ok({ deposits: data });
+        const { data } = await admin.from("deposits").select("*").order("created_at", { ascending: false }).limit(200);
+        const ids = [...new Set((data ?? []).map((r:any) => r.user_id))];
+        const { data: profs } = ids.length ? await admin.from("profiles").select("id,phone,email").in("id", ids) : { data: [] };
+        const map = new Map((profs ?? []).map((p:any) => [p.id, p]));
+        const deposits = (data ?? []).map((r:any) => ({ ...r, profiles: map.get(r.user_id) ?? null }));
+        return ok({ deposits });
       }
       case "list_withdrawals": {
-        const { data } = await admin.from("withdrawals").select("*, profiles!inner(phone,email)").order("created_at", { ascending: false }).limit(200);
-        return ok({ withdrawals: data });
+        const { data } = await admin.from("withdrawals").select("*").order("created_at", { ascending: false }).limit(200);
+        const ids = [...new Set((data ?? []).map((r:any) => r.user_id))];
+        const { data: profs } = ids.length ? await admin.from("profiles").select("id,phone,email").in("id", ids) : { data: [] };
+        const map = new Map((profs ?? []).map((p:any) => [p.id, p]));
+        const withdrawals = (data ?? []).map((r:any) => ({ ...r, profiles: map.get(r.user_id) ?? null }));
+        return ok({ withdrawals });
       }
       case "list_investments": {
-        const { data } = await admin.from("investments").select("*, profiles!inner(phone,email)").order("created_at", { ascending: false }).limit(500);
-        return ok({ investments: data });
+        const { data } = await admin.from("investments").select("*").order("created_at", { ascending: false }).limit(500);
+        const ids = [...new Set((data ?? []).map((r:any) => r.user_id))];
+        const { data: profs } = ids.length ? await admin.from("profiles").select("id,phone,email").in("id", ids) : { data: [] };
+        const map = new Map((profs ?? []).map((p:any) => [p.id, p]));
+        const investments = (data ?? []).map((r:any) => ({ ...r, profiles: map.get(r.user_id) ?? null }));
+        return ok({ investments });
       }
       default: return bad("Ação inválida");
     }

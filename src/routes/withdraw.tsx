@@ -41,7 +41,7 @@ function Withdraw() {
       <h1 className="text-xl font-bold mb-4">Sacar</h1>
       <Card className="p-4 mb-4 bg-gradient-card">
         <p className="text-sm">Saldo disponível: <span className="font-bold text-gold">{(profile?.balance ?? 0).toFixed(2)} MT</span></p>
-        <p className="text-xs text-muted-foreground mt-1">Mínimo 150 MT · Taxa 5% · Requer pelo menos 1 produto ativo</p>
+        <p className="text-xs text-muted-foreground mt-1">Mínimo 180 MT · Taxa 5% · Requer pelo menos 1 produto ativo</p>
         <p className="text-xs text-muted-foreground mt-1">Horário de saque: Segunda a Sexta, 08:30 às 18:00 · Processamento até 12h</p>
       </Card>
       <form onSubmit={submit} className="space-y-3">
@@ -49,10 +49,10 @@ function Withdraw() {
           <Button type="button" variant={method==="emola"?"default":"outline"} onClick={() => setMethod("emola")} className={method==="emola"?"bg-gradient-gold text-primary-foreground":""}>e-Mola</Button>
           <Button type="button" variant={method==="mpesa"?"default":"outline"} onClick={() => setMethod("mpesa")} className={method==="mpesa"?"bg-gradient-gold text-primary-foreground":""}>M-Pesa</Button>
         </div>
-        <div><Label>Valor a sacar (MT)</Label><Input type="number" min={150} value={amount} onChange={e=>setAmount(e.target.value)} required/></div>
+        <div><Label>Valor a sacar (MT)</Label><Input type="number" min={180} value={amount} onChange={e=>setAmount(e.target.value)} required/></div>
         <div><Label>Número da conta</Label><Input value={number} onChange={e=>setNumber(e.target.value)} required/></div>
         <div><Label>Nome da conta</Label><Input value={name} onChange={e=>setName(e.target.value)} required/></div>
-        {Number(amount) >= 150 && (
+        {Number(amount) >= 180 && (
           <Card className="p-3 text-sm bg-muted/40">
             <p>Taxa (5%): <span className="font-bold">{fee.toFixed(2)} MT</span></p>
             <p>Recebe: <span className="font-bold text-success">{net.toFixed(2)} MT</span></p>

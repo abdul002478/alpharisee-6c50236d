@@ -7,7 +7,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Clock, TrendingUp, Coins } from "lucide-react";
+import { Clock, TrendingUp, Coins, MessageCircle, Info } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+
+const WHATSAPP_MANAGER = "https://chat.whatsapp.com/KHn1AyGbd4o1nOg6Q0xtju";
 
 export const Route = createFileRoute("/")({ component: Index });
 
@@ -63,6 +66,45 @@ function Index() {
           <Coins className="w-10 h-10 opacity-80" />
         </div>
       </Card>
+
+      <div className="grid grid-cols-2 gap-3 mb-4">
+        <a href={WHATSAPP_MANAGER} target="_blank" rel="noopener noreferrer">
+          <Card className="p-3 bg-card hover:bg-muted/40 transition flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+              <MessageCircle className="w-5 h-5 text-green-500"/>
+            </div>
+            <div>
+              <p className="text-sm font-semibold">Gerente</p>
+              <p className="text-[10px] text-muted-foreground">WhatsApp</p>
+            </div>
+          </Card>
+        </a>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Card className="p-3 bg-card hover:bg-muted/40 transition flex items-center gap-3 cursor-pointer">
+              <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+                <Info className="w-5 h-5 text-blue-500"/>
+              </div>
+              <div>
+                <p className="text-sm font-semibold">Sobre</p>
+                <p className="text-[10px] text-muted-foreground">Como funciona</p>
+              </div>
+            </Card>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader><DialogTitle>Sobre a plataforma</DialogTitle></DialogHeader>
+            <div className="text-sm space-y-2 text-muted-foreground">
+              <p><span className="font-semibold text-foreground">Como funciona:</span> Compre um produto de mineração com o seu saldo e receba rendimentos diários (ou totais no final, conforme o produto).</p>
+              <p><span className="font-semibold text-foreground">Depósito mínimo:</span> 400 MT via e-Mola ou M-Pesa.</p>
+              <p><span className="font-semibold text-foreground">Saque mínimo:</span> 180 MT · Taxa 5%.</p>
+              <p><span className="font-semibold text-foreground">Horário de saque:</span> Segunda a Sexta, 08:30 às 18:00 · Processamento até 12h.</p>
+              <p><span className="font-semibold text-foreground">Produtos de 5 dias:</span> Só podem ser comprados se já tiver um produto de 30 ou 365 dias ativo.</p>
+              <p><span className="font-semibold text-foreground">Convide amigos:</span> Ganhe chances na roleta da sorte por cada primeira compra dos seus convidados.</p>
+              <p><span className="font-semibold text-foreground">Suporte:</span> Entre em contacto com o gerente via WhatsApp para qualquer dúvida.</p>
+            </div>
+          </DialogContent>
+        </Dialog>
+      </div>
 
       <Tabs defaultValue="d5" className="w-full">
         <TabsList className="grid grid-cols-3 w-full bg-card">
