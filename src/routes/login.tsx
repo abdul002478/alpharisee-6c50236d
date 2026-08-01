@@ -8,10 +8,18 @@ import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
 import { TrendingUp, Eye, EyeOff } from "lucide-react";
 
-export const Route = createFileRoute("/login")({ component: Login });
+function safeNext(value: unknown): string | undefined {
+  return typeof value === "string" && value.startsWith("/") && !value.startsWith("//") ? value : undefined;
+}
+
+export const Route = createFileRoute("/login")({
+  component: Login,
+  validateSearch: (s: Record<string, unknown>) => ({ next: safeNext(s.next) }),
+});
 
 function Login() {
   const nav = useNavigate();
+  const { next } = Route.useSearch();
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [showPwd, setShowPwd] = useState(false);
@@ -31,6 +39,7 @@ function Login() {
     setLoading(false);
     if (error) return toast.error("Credenciais inválidas");
     toast.success("Bem-vindo!");
+    if (next) { window.location.href = next; return; }
     nav({ to: "/" });
   };
 
