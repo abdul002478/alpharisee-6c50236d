@@ -1,0 +1,118 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://wvzhlbgxpvhiirttwmcc.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "investir-rapido-mocambique",
+      "version": "0.1.0",
+      "title": "Investir Rápido Moçambique"
+    },
+    "tools": [
+      {
+        "name": "get_account",
+        "title": "Ver conta",
+        "description": "Retorna o saldo, telefone, email, código de convite e chances de roleta do utilizador autenticado.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_products",
+        "title": "Listar produtos",
+        "description": "Lista os produtos de investimento disponíveis na plataforma (preço, rendimento diário e duração).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_investments",
+        "title": "Listar investimentos",
+        "description": "Lista os produtos comprados pelo utilizador autenticado, com estado, rendimento creditado e data de fim.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_transactions",
+        "title": "Listar transações",
+        "description": "Lista as transações recentes (depósitos, saques, rendimentos, compras) do utilizador autenticado.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "limit": {
+              "description": "Número máximo de transações a devolver (padrão 20, máximo 100).",
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_requests",
+        "title": "Listar pedidos de depósito/saque",
+        "description": "Lista os pedidos de depósito e/ou saque do utilizador autenticado e o seu estado (pendente, aprovado, rejeitado).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "description": "Que pedidos listar. Padrão: all.",
+              "type": "string",
+              "enum": [
+                "deposits",
+                "withdrawals",
+                "all"
+              ]
+            }
+          }
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
