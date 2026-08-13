@@ -10,7 +10,7 @@ import { TrendingUp, Eye, EyeOff } from "lucide-react";
 
 export const Route = createFileRoute("/signup")({
   component: Signup,
-  validateSearch: (s: Record<string, unknown>) => ({ ref: (s.ref as string) || "" }),
+  validateSearch: (s: Record<string, unknown>): { ref?: string } => ({ ref: (s.ref as string) || "" }),
 });
 
 function Signup() {
