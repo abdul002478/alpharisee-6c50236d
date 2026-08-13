@@ -14,7 +14,7 @@ function safeNext(value: unknown): string | undefined {
 
 export const Route = createFileRoute("/login")({
   component: Login,
-  validateSearch: (s: Record<string, unknown>) => ({ next: safeNext(s.next) }),
+  validateSearch: (s: Record<string, unknown>): { next?: string } => ({ next: safeNext(s.next) }),
 });
 
 function Login() {
