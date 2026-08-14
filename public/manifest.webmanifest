@@ -1,9 +1,9 @@
 {
-  "id": "/",
+  "id": "https://alpharisee.lovable.app/",
   "name": "Alpha Risee - Investimentos",
   "short_name": "Alpha Risee",
   "description": "Plataforma de investimentos com rendimentos diários em Moçambique.",
-  "start_url": "/",
+  "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui", "browser"],
@@ -13,7 +13,15 @@
   "lang": "pt-MZ",
   "dir": "ltr",
   "categories": ["finance", "business", "productivity"],
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "handle_links": "preferred",
+  "launch_handler": { "client_mode": "navigate-existing" },
+  "scope_extensions": [
+    { "origin": "https://alpharisee.lovable.app" },
+    { "origin": "https://*.lovable.app" }
+  ],
   "prefer_related_applications": false,
+
   "icons": [
     { "src": "/icons/icon-48.png", "sizes": "48x48", "type": "image/png", "purpose": "any" },
     { "src": "/icons/icon-72.png", "sizes": "72x72", "type": "image/png", "purpose": "any" },
