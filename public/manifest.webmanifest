@@ -1,15 +1,15 @@
 {
   "id": "https://alpharisee.lovable.app/",
-  "name": "Alpha Risee - Investimentos",
-  "short_name": "Alpha Risee",
+  "name": "Fantastic - Investimentos",
+  "short_name": "Fantastic",
   "description": "Plataforma de investimentos com rendimentos diários em Moçambique.",
   "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui", "browser"],
   "orientation": "portrait",
-  "background_color": "#0b1220",
-  "theme_color": "#0b1220",
+  "background_color": "#1a35c8",
+  "theme_color": "#1a35c8",
   "lang": "pt-MZ",
   "dir": "ltr",
   "categories": ["finance", "business", "productivity"],
@@ -44,7 +44,7 @@
       "sizes": "412x915",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Entrar na Alpha Risee"
+      "label": "Entrar na Fantastic"
     },
     {
       "src": "/screenshots/mobile-signup.png",
@@ -58,7 +58,7 @@
       "sizes": "1280x800",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Alpha Risee no computador"
+      "label": "Fantastic no computador"
     }
   ],
   "shortcuts": [
