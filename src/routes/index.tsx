@@ -12,7 +12,19 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 
 const WHATSAPP_MANAGER = "https://chat.whatsapp.com/KHn1AyGbd4o1nOg6Q0xtju";
 
-export const Route = createFileRoute("/")({ component: Index });
+export const Route = createFileRoute("/")({
+  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Fantastic — Produtos de investimento diários" },
+      { name: "description", content: "Escolha produtos de 5, 30 ou 365 dias e receba rendimentos diários na Fantastic." },
+      { property: "og:title", content: "Fantastic — Produtos de investimento diários" },
+      { property: "og:description", content: "Escolha produtos de 5, 30 ou 365 dias e receba rendimentos diários na Fantastic." },
+      { property: "og:url", content: "https://alpharisee.lovable.app/" },
+    ],
+    links: [{ rel: "canonical", href: "https://alpharisee.lovable.app/" }],
+  }),
+});
 
 interface Product {
   id: string; name: string; category: "d5"|"d30"|"d365";
