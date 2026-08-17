@@ -50,7 +50,11 @@ function Login() {
           <div className="w-10 h-10 rounded-lg bg-gradient-gold flex items-center justify-center">
             <TrendingUp className="w-5 h-5 text-primary-foreground" />
           </div>
-          <h1 className="text-2xl font-bold text-gold">Entrar</h1>
+          <div>
+            <h1 className="text-2xl font-bold text-gold leading-none">Fantastic</h1>
+            <p className="text-xs text-muted-foreground">Entrar na sua conta</p>
+          </div>
+
         </div>
         <form onSubmit={submit} className="space-y-4">
           <div>

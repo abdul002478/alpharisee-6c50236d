@@ -36,44 +36,45 @@
 }
 
 :root {
-  --radius: 0.75rem;
-  /* Deep navy / gold investment theme */
-  --background: oklch(0.16 0.03 260);
-  --foreground: oklch(0.97 0.01 90);
-  --card: oklch(0.21 0.035 260);
-  --card-foreground: oklch(0.97 0.01 90);
-  --popover: oklch(0.21 0.035 260);
-  --popover-foreground: oklch(0.97 0.01 90);
-  --primary: oklch(0.82 0.16 85);          /* gold */
-  --primary-foreground: oklch(0.18 0.03 260);
-  --secondary: oklch(0.28 0.04 260);
-  --secondary-foreground: oklch(0.97 0.01 90);
-  --muted: oklch(0.25 0.03 260);
-  --muted-foreground: oklch(0.7 0.02 260);
-  --accent: oklch(0.65 0.2 150);            /* emerald accent */
-  --accent-foreground: oklch(0.16 0.03 260);
-  --destructive: oklch(0.65 0.22 25);
-  --destructive-foreground: oklch(0.97 0.01 90);
-  --success: oklch(0.7 0.18 150);
-  --success-foreground: oklch(0.16 0.03 260);
-  --gold: oklch(0.82 0.16 85);
-  --border: oklch(0.3 0.03 260);
-  --input: oklch(0.25 0.03 260);
-  --ring: oklch(0.82 0.16 85);
+  --radius: 1rem;
+  /* Fantastic — vivid sticker palette: electric blue, bubble yellow, candy accents */
+  --background: oklch(0.42 0.24 264);
+  --foreground: oklch(0.99 0.01 100);
+  --card: oklch(0.52 0.19 256);
+  --card-foreground: oklch(0.99 0.01 100);
+  --popover: oklch(0.46 0.20 260);
+  --popover-foreground: oklch(0.99 0.01 100);
+  --primary: oklch(0.89 0.18 100);          /* bubble yellow */
+  --primary-foreground: oklch(0.28 0.14 265);
+  --secondary: oklch(0.60 0.18 250);
+  --secondary-foreground: oklch(0.99 0.01 100);
+  --muted: oklch(0.50 0.17 258);
+  --muted-foreground: oklch(0.88 0.06 250);
+  --accent: oklch(0.70 0.22 350);           /* candy pink */
+  --accent-foreground: oklch(0.99 0.01 100);
+  --destructive: oklch(0.63 0.24 22);       /* sticker red */
+  --destructive-foreground: oklch(0.99 0.01 100);
+  --success: oklch(0.78 0.21 140);          /* lime green */
+  --success-foreground: oklch(0.25 0.12 265);
+  --gold: oklch(0.89 0.18 100);
+  --border: oklch(0.66 0.16 252);
+  --input: oklch(0.50 0.17 258);
+  --ring: oklch(0.89 0.18 100);
 
-  --gradient-gold: linear-gradient(135deg, oklch(0.82 0.16 85), oklch(0.7 0.17 60));
-  --gradient-card: linear-gradient(160deg, oklch(0.23 0.04 260), oklch(0.19 0.03 260));
-  --gradient-hero: radial-gradient(circle at 20% 0%, oklch(0.35 0.08 260), oklch(0.16 0.03 260) 60%);
-  --shadow-gold: 0 10px 40px -10px oklch(0.82 0.16 85 / 0.4);
-  --shadow-card: 0 8px 24px -8px oklch(0.05 0.02 260 / 0.6);
+  --gradient-gold: linear-gradient(135deg, oklch(0.92 0.17 105), oklch(0.76 0.20 60));
+  --gradient-card: linear-gradient(160deg, oklch(0.56 0.19 252), oklch(0.45 0.21 262));
+  --gradient-hero: radial-gradient(circle at 20% 0%, oklch(0.62 0.20 250), oklch(0.40 0.24 265) 60%);
+  --shadow-gold: 0 10px 40px -10px oklch(0.89 0.18 100 / 0.55);
+  --shadow-card: 0 8px 24px -8px oklch(0.20 0.12 265 / 0.6);
 }
 
 .dark {
-  --background: oklch(0.16 0.03 260);
-  --foreground: oklch(0.97 0.01 90);
-  --card: oklch(0.21 0.035 260);
-  --card-foreground: oklch(0.97 0.01 90);
+  --background: oklch(0.42 0.24 264);
+  --foreground: oklch(0.99 0.01 100);
+  --card: oklch(0.52 0.19 256);
+  --card-foreground: oklch(0.99 0.01 100);
 }
+
 
 @layer base {
   * { border-color: var(--color-border); }
