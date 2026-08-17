@@ -59,11 +59,12 @@ function Admin() {
       </header>
       <div className="max-w-4xl mx-auto">
         <Tabs defaultValue="deposits">
-          <TabsList className="grid grid-cols-4 w-full">
+          <TabsList className="grid grid-cols-5 w-full">
             <TabsTrigger value="deposits">Depósitos</TabsTrigger>
             <TabsTrigger value="withdrawals">Saques</TabsTrigger>
             <TabsTrigger value="mining">Mineração</TabsTrigger>
             <TabsTrigger value="users">Usuários</TabsTrigger>
+            <TabsTrigger value="rules">Regras</TabsTrigger>
           </TabsList>
 
           <TabsContent value="deposits" className="space-y-2 mt-4">
@@ -130,6 +131,70 @@ function Admin() {
 
           <TabsContent value="users" className="space-y-2 mt-4">
             {users.map((u) => <UserRow key={u.id} u={u} onSaved={reload} callAdmin={callAdmin}/>)}
+          </TabsContent>
+
+          <TabsContent value="rules" className="mt-4">
+            <Card className="p-4 space-y-4 text-sm">
+              <h2 className="text-lg font-bold text-gold">Regras da plataforma</h2>
+
+              <section className="space-y-1">
+                <h3 className="font-semibold">Produtos e rendimentos</h3>
+                <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                  <li>Produtos de 365 dias: 2% ao dia, valor mínimo 200 MT.</li>
+                  <li>Produtos de 30 dias: 10% ao dia, valor mínimo 450 MT.</li>
+                  <li>Produtos de 5 dias: 40% ao dia, valor mínimo 1000 MT.</li>
+                  <li>Qualquer produto pode ser comprado desde que o saldo seja suficiente.</li>
+                  <li>Produtos de 5 dias só podem ser comprados por quem já tem um produto ativo de 30 ou 365 dias.</li>
+                </ul>
+              </section>
+
+              <section className="space-y-1">
+                <h3 className="font-semibold">Créditos</h3>
+                <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                  <li>Produtos de 30 e 365 dias são creditados todos os dias às 00:00.</li>
+                  <li>Produtos de 5 dias pagam o valor total apenas no fim dos 5 dias.</li>
+                </ul>
+              </section>
+
+              <section className="space-y-1">
+                <h3 className="font-semibold">Depósitos</h3>
+                <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                  <li>Depósito mínimo: 400 MT.</li>
+                  <li>e-Mola: 871144722 — ARGELIO MARIO JOSÉ.</li>
+                  <li>M-Pesa: 842960119 — LINA PUANELA NURO.</li>
+                  <li>Depósitos podem ser feitos todos os dias, a qualquer hora, e são confirmados pelo ADM.</li>
+                </ul>
+              </section>
+
+              <section className="space-y-1">
+                <h3 className="font-semibold">Saques</h3>
+                <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                  <li>Saque mínimo: 180 MT.</li>
+                  <li>Taxa de 5% sobre o valor do saque.</li>
+                  <li>Apenas utilizadores com pelo menos um produto ativo podem sacar.</li>
+                  <li>Horário: segunda a sexta, das 08:30 às 18:00 (até 12h de processamento).</li>
+                </ul>
+              </section>
+
+              <section className="space-y-1">
+                <h3 className="font-semibold">Convites e roleta</h3>
+                <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                  <li>Bónus de convite: 18% do valor da primeira compra do convidado.</li>
+                  <li>Cada primeira compra de um convidado dá também 1 chance na roleta.</li>
+                  <li>Ao criar conta o utilizador recebe 1 chance na roleta.</li>
+                  <li>Roleta de 8 prémios, entre 25 MT e 760 MT.</li>
+                </ul>
+              </section>
+
+              <section className="space-y-1">
+                <h3 className="font-semibold">Administração</h3>
+                <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
+                  <li>Apenas o ADM aprova ou rejeita depósitos e saques.</li>
+                  <li>Saque rejeitado é reembolsado automaticamente ao utilizador.</li>
+                  <li>O ADM pode editar saldo, telefone, email e senha dos utilizadores.</li>
+                </ul>
+              </section>
+            </Card>
           </TabsContent>
         </Tabs>
       </div>
