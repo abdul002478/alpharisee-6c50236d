@@ -6,7 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
-import { TrendingUp, Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
+import logoAsset from "@/assets/fantastic-logo.png.asset.json";
 
 function safeNext(value: unknown): string | undefined {
   return typeof value === "string" && value.startsWith("/") && !value.startsWith("//") ? value : undefined;
@@ -47,9 +48,7 @@ function Login() {
     <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
       <Card className="w-full max-w-md p-6 bg-gradient-card shadow-card">
         <div className="flex items-center gap-2 mb-6">
-          <div className="w-10 h-10 rounded-lg bg-gradient-gold flex items-center justify-center">
-            <TrendingUp className="w-5 h-5 text-primary-foreground" />
-          </div>
+          <img src={logoAsset.url} alt="Logótipo Fantastic" className="w-12 h-12 rounded-xl object-cover" />
           <div>
             <h1 className="text-2xl font-bold text-gold leading-none">Fantastic</h1>
             <p className="text-xs text-muted-foreground">Entrar na sua conta</p>
