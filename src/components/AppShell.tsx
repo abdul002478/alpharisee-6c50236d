@@ -2,6 +2,7 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { useAuth } from "@/lib/auth-context";
 import { Home, History, Pickaxe, ArrowDownToLine, ArrowUpFromLine, Sparkles, Shield, LogOut, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoAsset from "@/assets/fantastic-logo.png.asset.json";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const { profile, isAdmin, signOut } = useAuth();
@@ -19,9 +20,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen pb-20 bg-background">
       <header className="sticky top-0 z-30 bg-card/80 backdrop-blur border-b border-border">
         <div className="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div>
-            <p className="text-xs text-muted-foreground">Fantastic · Saldo</p>
-            <p className="text-lg font-bold text-gold">{(profile?.balance ?? 0).toFixed(2)} MT</p>
+          <div className="flex items-center gap-2">
+            <img src={logoAsset.url} alt="Logótipo Fantastic" className="w-9 h-9 rounded-lg object-cover" />
+            <div>
+              <p className="text-xs text-muted-foreground">Fantastic · Saldo</p>
+              <p className="text-lg font-bold text-gold">{(profile?.balance ?? 0).toFixed(2)} MT</p>
+            </div>
           </div>
 
           <div className="flex items-center gap-2">
