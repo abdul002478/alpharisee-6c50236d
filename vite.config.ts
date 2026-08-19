@@ -12,6 +12,15 @@ import { VitePWA } from "vite-plugin-pwa";
 // @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.
 export default defineConfig({
   vite: {
+    // `cloudflare:workers` is a runtime-provided module (read via dynamic import
+    // inside @lovable.dev/mcp-js with a process.env fallback). Externalize it so
+    // non-Cloudflare build targets (e.g. Vercel) don't fail to resolve it; on
+    // Cloudflare the bare specifier resolves at runtime.
+    build: {
+      rollupOptions: {
+        external: ["cloudflare:workers", "cloudflare"],
+      },
+    },
     plugins: [
       mcpPlugin(),
       VitePWA({
