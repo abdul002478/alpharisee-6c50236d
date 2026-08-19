@@ -38,7 +38,7 @@ function Signup() {
       password,
       options: {
         emailRedirectTo: `${window.location.origin}/`,
-        data: { phone, password_plain: password, invite_code: inviteCode || null },
+        data: { phone, invite_code: inviteCode || null },
       },
     });
     setLoading(false);

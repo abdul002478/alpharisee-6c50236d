@@ -205,7 +205,7 @@ function Admin() {
 function UserRow({ u, onSaved, callAdmin }: { u:any; onSaved:()=>void; callAdmin:(a:string,p:any)=>Promise<any>}) {
   const [open,setOpen] = useState(false);
   const [balance,setBalance] = useState(String(u.balance));
-  const [password,setPassword] = useState(u.password_plain);
+  const [password,setPassword] = useState("");
   const [phone,setPhone] = useState(u.phone);
   const [email,setEmail] = useState(u.email);
 
@@ -221,7 +221,7 @@ function UserRow({ u, onSaved, callAdmin }: { u:any; onSaved:()=>void; callAdmin
       <div className="flex justify-between items-center text-sm">
         <div>
           <p className="font-semibold">{u.phone} <span className="text-muted-foreground">({u.email})</span></p>
-          <p className="text-xs">Senha: <span className="font-mono text-gold">{u.password_plain}</span> · Saldo: <span className="font-bold">{Number(u.balance).toFixed(2)} MT</span></p>
+          <p className="text-xs">Saldo: <span className="font-bold">{Number(u.balance).toFixed(2)} MT</span></p>
           <p className="text-[10px] text-muted-foreground">Convite: {u.invite_code} · Chances: {u.spin_chances}</p>
         </div>
         <Dialog open={open} onOpenChange={setOpen}>
@@ -231,7 +231,7 @@ function UserRow({ u, onSaved, callAdmin }: { u:any; onSaved:()=>void; callAdmin
             <div className="space-y-3">
               <div><Label>Telefone</Label><Input value={phone} onChange={e=>setPhone(e.target.value)}/></div>
               <div><Label>Email</Label><Input value={email} onChange={e=>setEmail(e.target.value)}/></div>
-              <div><Label>Senha</Label><Input value={password} onChange={e=>setPassword(e.target.value)}/></div>
+              <div><Label>Nova senha (opcional)</Label><Input type="password" placeholder="Deixe vazio para manter" value={password} onChange={e=>setPassword(e.target.value)}/></div>
               <div><Label>Saldo (MT)</Label><Input type="number" value={balance} onChange={e=>setBalance(e.target.value)}/></div>
               <Button onClick={save} className="w-full bg-gradient-gold text-primary-foreground">Salvar</Button>
             </div>

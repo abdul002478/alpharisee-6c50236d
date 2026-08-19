@@ -21,7 +21,7 @@ Deno.serve(async (req) => {
       email: ADMIN_EMAIL,
       password: ADMIN_PASSWORD,
       email_confirm: true,
-      user_metadata: { phone: ADMIN_PHONE, password_plain: ADMIN_PASSWORD },
+      user_metadata: { phone: ADMIN_PHONE },
     });
     if (error || !created.user) return bad(error?.message || "erro ao criar admin", 500);
 

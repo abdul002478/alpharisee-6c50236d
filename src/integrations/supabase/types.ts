@@ -163,7 +163,6 @@ export type Database = {
           id: string
           invite_code: string
           invited_by: string | null
-          password_plain: string
           phone: string
           spin_chances: number
         }
@@ -175,7 +174,6 @@ export type Database = {
           id: string
           invite_code: string
           invited_by?: string | null
-          password_plain: string
           phone: string
           spin_chances?: number
         }
@@ -187,7 +185,6 @@ export type Database = {
           id?: string
           invite_code?: string
           invited_by?: string | null
-          password_plain?: string
           phone?: string
           spin_chances?: number
         }
@@ -327,13 +324,6 @@ export type Database = {
     }
     Functions: {
       gen_invite_code: { Args: never; Returns: string }
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
     }
     Enums: {
       app_role: "admin" | "user"
