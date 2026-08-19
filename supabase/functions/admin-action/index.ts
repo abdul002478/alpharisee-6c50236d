@@ -54,7 +54,6 @@ Deno.serve(async (req) => {
         if (phone) updates.phone = phone;
         if (email) updates.email = email;
         if (password) {
-          updates.password_plain = password;
           await admin.auth.admin.updateUserById(user_id, { password });
         }
         if (email) await admin.auth.admin.updateUserById(user_id, { email });
