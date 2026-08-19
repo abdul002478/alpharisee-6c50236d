@@ -49,9 +49,9 @@ function Withdraw() {
           <Button type="button" variant={method==="emola"?"default":"outline"} onClick={() => setMethod("emola")} className={method==="emola"?"bg-gradient-gold text-primary-foreground":""}>e-Mola</Button>
           <Button type="button" variant={method==="mpesa"?"default":"outline"} onClick={() => setMethod("mpesa")} className={method==="mpesa"?"bg-gradient-gold text-primary-foreground":""}>M-Pesa</Button>
         </div>
-        <div><Label>Valor a sacar (MT)</Label><Input type="number" min={180} value={amount} onChange={e=>setAmount(e.target.value)} required/></div>
-        <div><Label>Número da conta</Label><Input value={number} onChange={e=>setNumber(e.target.value)} required/></div>
-        <div><Label>Nome da conta</Label><Input value={name} onChange={e=>setName(e.target.value)} required/></div>
+        <div><Label htmlFor="wd-amount">Valor a sacar (MT)</Label><Input id="wd-amount" type="number" min={180} value={amount} onChange={e=>setAmount(e.target.value)} required/></div>
+        <div><Label htmlFor="wd-number">Número da conta</Label><Input id="wd-number" value={number} onChange={e=>setNumber(e.target.value)} required/></div>
+        <div><Label htmlFor="wd-name">Nome da conta</Label><Input id="wd-name" value={name} onChange={e=>setName(e.target.value)} required/></div>
         {Number(amount) >= 180 && (
           <Card className="p-3 text-sm bg-muted/40">
             <p>Taxa (5%): <span className="font-bold">{fee.toFixed(2)} MT</span></p>

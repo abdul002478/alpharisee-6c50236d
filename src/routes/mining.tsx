@@ -45,7 +45,7 @@ function Mining() {
           return (
             <Card key={i.id} className="p-4 bg-gradient-card shadow-card">
               <div className="flex justify-between items-center mb-2">
-                <h3 className="font-bold">{i.product_name}</h3>
+                <h2 className="font-bold">{i.product_name}</h2>
                 <span className={`text-xs px-2 py-0.5 rounded ${i.status==="active" ? "bg-success/20 text-success" : "bg-muted text-muted-foreground"}`}>{i.status === "active" ? "Ativo" : "Concluído"}</span>
               </div>
               <p className="text-xs text-muted-foreground mb-2">Investido: {Number(i.amount).toFixed(2)} MT · {i.daily_yield_pct}% / dia · {i.duration_days} dias</p>

@@ -84,10 +84,10 @@ function Deposit() {
 
       <form onSubmit={submit} className="space-y-3">
         <p className="text-sm text-muted-foreground">2. Preencha os dados do depósito:</p>
-        <div><Label>Valor (MT)</Label><Input type="number" min={400} value={amount} onChange={e => setAmount(e.target.value)} required/></div>
-        <div><Label>Referência da transação</Label><Input value={reference} onChange={e=>setReference(e.target.value)} required/></div>
-        <div><Label>Nome de quem fez a transferência</Label><Input value={senderName} onChange={e=>setSenderName(e.target.value)} required/></div>
-        <div><Label>Número de quem fez a transferência</Label><Input value={senderPhone} onChange={e=>setSenderPhone(e.target.value)} required/></div>
+        <div><Label htmlFor="dep-amount">Valor (MT)</Label><Input id="dep-amount" type="number" min={400} value={amount} onChange={e => setAmount(e.target.value)} required/></div>
+        <div><Label htmlFor="dep-ref">Referência da transação</Label><Input id="dep-ref" value={reference} onChange={e=>setReference(e.target.value)} required/></div>
+        <div><Label htmlFor="dep-sender-name">Nome de quem fez a transferência</Label><Input id="dep-sender-name" value={senderName} onChange={e=>setSenderName(e.target.value)} required/></div>
+        <div><Label htmlFor="dep-sender-phone">Número de quem fez a transferência</Label><Input id="dep-sender-phone" value={senderPhone} onChange={e=>setSenderPhone(e.target.value)} required/></div>
         <Button type="submit" disabled={loading} className="w-full bg-gradient-gold text-primary-foreground">{loading?"...":"Enviar pedido"}</Button>
       </form>
     </AppShell>
