@@ -7,7 +7,21 @@ import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Pickaxe } from "lucide-react";
 
-export const Route = createFileRoute("/mining")({ component: Mining });
+export const Route = createFileRoute("/mining")({
+  component: Mining,
+  head: () => ({
+    meta: [
+      { title: "Fantastic — Mineração em tempo real" },
+      { name: "description", content: "Acompanhe em tempo real os rendimentos dos produtos que comprou na Fantastic." },
+      { property: "og:title", content: "Fantastic — Mineração em tempo real" },
+      { property: "og:description", content: "Acompanhe em tempo real os rendimentos dos produtos que comprou na Fantastic." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://alpharisee.lovable.app/mining" },
+      { name: "twitter:card", content: "summary_large_image" }
+    ],
+    links: [{ rel: "canonical", href: "https://alpharisee.lovable.app/mining" }],
+  }),
+});
 
 interface Inv { id:string; product_name:string; category:string; amount:number; daily_yield_pct:number; duration_days:number; start_date:string; end_date:string; total_credited:number; status:string; }
 
@@ -45,7 +59,7 @@ function Mining() {
           return (
             <Card key={i.id} className="p-4 bg-gradient-card shadow-card">
               <div className="flex justify-between items-center mb-2">
-                <h3 className="font-bold">{i.product_name}</h3>
+                <h2 className="font-bold">{i.product_name}</h2>
                 <span className={`text-xs px-2 py-0.5 rounded ${i.status==="active" ? "bg-success/20 text-success" : "bg-muted text-muted-foreground"}`}>{i.status === "active" ? "Ativo" : "Concluído"}</span>
               </div>
               <p className="text-xs text-muted-foreground mb-2">Investido: {Number(i.amount).toFixed(2)} MT · {i.daily_yield_pct}% / dia · {i.duration_days} dias</p>

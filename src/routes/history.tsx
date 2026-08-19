@@ -5,7 +5,21 @@ import { useAuth } from "@/lib/auth-context";
 import { AppShell } from "@/components/AppShell";
 import { Card } from "@/components/ui/card";
 
-export const Route = createFileRoute("/history")({ component: History });
+export const Route = createFileRoute("/history")({
+  component: History,
+  head: () => ({
+    meta: [
+      { title: "Fantastic — Histórico de transações" },
+      { name: "description", content: "Consulte todos os seus depósitos, saques, compras e rendimentos na Fantastic." },
+      { property: "og:title", content: "Fantastic — Histórico de transações" },
+      { property: "og:description", content: "Consulte todos os seus depósitos, saques, compras e rendimentos na Fantastic." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://alpharisee.lovable.app/history" },
+      { name: "twitter:card", content: "summary_large_image" }
+    ],
+    links: [{ rel: "canonical", href: "https://alpharisee.lovable.app/history" }],
+  }),
+});
 
 interface Tx { id:string; type:string; amount:number; balance_after:number; description:string; created_at:string; }
 

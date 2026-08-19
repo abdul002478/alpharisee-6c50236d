@@ -11,7 +11,21 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { toast } from "sonner";
 import { ArrowLeft, Shield } from "lucide-react";
 
-export const Route = createFileRoute("/admin")({ component: Admin });
+export const Route = createFileRoute("/admin")({
+  component: Admin,
+  head: () => ({
+    meta: [
+      { title: "Fantastic — Painel de administração" },
+      { name: "description", content: "Área reservada de administração da Fantastic para aprovar depósitos e saques." },
+      { property: "og:title", content: "Fantastic — Painel de administração" },
+      { property: "og:description", content: "Área reservada de administração da Fantastic para aprovar depósitos e saques." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://alpharisee.lovable.app/admin" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "noindex" }
+    ],
+  }),
+});
 
 function Admin() {
   const { isAdmin, loading } = useAuth();

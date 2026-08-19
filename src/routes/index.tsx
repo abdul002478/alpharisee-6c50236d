@@ -73,7 +73,8 @@ function Index() {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-xs opacity-80">Investimentos disponíveis</p>
-            <h2 className="text-xl font-bold">Cresça o seu capital</h2>
+            <h1 className="text-xl font-bold">Fantastic — Invista e ganhe rendimentos diários em Moçambique</h1>
+
           </div>
           <Coins className="w-10 h-10 opacity-80" />
         </div>
@@ -133,7 +134,7 @@ function Index() {
                 return (
                   <Card key={p.id} className="p-3 bg-gradient-card shadow-card border-border">
                     <div className="mb-2">
-                      <h3 className="font-bold text-foreground text-sm leading-tight">{p.name}</h3>
+                      <h2 className="font-bold text-foreground text-sm leading-tight">{p.name}</h2>
                       <p className="text-[10px] text-muted-foreground flex items-center gap-1 mt-1">
                         <Clock className="w-3 h-3"/> {p.duration_days}d · {p.daily_yield_pct}%/dia
                       </p>

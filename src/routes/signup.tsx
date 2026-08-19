@@ -11,6 +11,18 @@ import logoAsset from "@/assets/fantastic-logo.png.asset.json";
 
 export const Route = createFileRoute("/signup")({
   component: Signup,
+  head: () => ({
+    meta: [
+      { title: "Fantastic — Criar conta grátis" },
+      { name: "description", content: "Crie a sua conta Fantastic com número de Moçambique e Gmail e ganhe uma chance na roleta." },
+      { property: "og:title", content: "Fantastic — Criar conta grátis" },
+      { property: "og:description", content: "Crie a sua conta Fantastic com número de Moçambique e Gmail e ganhe uma chance na roleta." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://alpharisee.lovable.app/signup" },
+      { name: "twitter:card", content: "summary_large_image" }
+    ],
+    links: [{ rel: "canonical", href: "https://alpharisee.lovable.app/signup" }],
+  }),
   validateSearch: (s: Record<string, unknown>): { ref?: string } => ({ ref: (s.ref as string) || "" }),
 });
 
@@ -56,12 +68,13 @@ function Signup() {
         </div>
         <form onSubmit={submit} className="space-y-4">
           <div>
-            <Label>Número de Moçambique</Label>
+            <Label htmlFor="su-phone">Número de Moçambique</Label>
             <div className="flex">
               <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-input bg-muted text-sm text-muted-foreground font-medium">
                 +258
               </span>
               <Input
+                id="su-phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
                 placeholder="84xxxxxxx"
@@ -71,13 +84,14 @@ function Signup() {
             </div>
           </div>
           <div>
-            <Label>Gmail</Label>
-            <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="exemplo@gmail.com" />
+            <Label htmlFor="su-email">Gmail</Label>
+            <Input id="su-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="exemplo@gmail.com" />
           </div>
           <div>
-            <Label>Senha</Label>
+            <Label htmlFor="su-password">Senha</Label>
             <div className="relative">
               <Input
+                id="su-password"
                 type={showPwd ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -86,6 +100,7 @@ function Signup() {
               <button
                 type="button"
                 onClick={() => setShowPwd((v) => !v)}
+                aria-label={showPwd ? "Ocultar senha" : "Mostrar senha"}
                 className="absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground hover:text-foreground"
                 tabIndex={-1}
               >
@@ -94,9 +109,10 @@ function Signup() {
             </div>
           </div>
           <div>
-            <Label>Confirmar senha</Label>
+            <Label htmlFor="su-password2">Confirmar senha</Label>
             <div className="relative">
               <Input
+                id="su-password2"
                 type={showPwd2 ? "text" : "password"}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
@@ -105,6 +121,7 @@ function Signup() {
               <button
                 type="button"
                 onClick={() => setShowPwd2((v) => !v)}
+                aria-label={showPwd2 ? "Ocultar confirmação de senha" : "Mostrar confirmação de senha"}
                 className="absolute inset-y-0 right-0 flex items-center px-3 text-muted-foreground hover:text-foreground"
                 tabIndex={-1}
               >
@@ -113,8 +130,8 @@ function Signup() {
             </div>
           </div>
           <div>
-            <Label>Código de convite (opcional)</Label>
-            <Input value={inviteCode} onChange={(e) => setInviteCode(e.target.value.toUpperCase())} />
+            <Label htmlFor="su-invite">Código de convite (opcional)</Label>
+            <Input id="su-invite" value={inviteCode} onChange={(e) => setInviteCode(e.target.value.toUpperCase())} />
           </div>
           <Button type="submit" disabled={loading} className="w-full bg-gradient-gold text-primary-foreground font-semibold shadow-gold">
             {loading ? "A criar..." : "Criar conta"}

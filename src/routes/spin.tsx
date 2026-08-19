@@ -8,7 +8,21 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Sparkles } from "lucide-react";
 
-export const Route = createFileRoute("/spin")({ component: Spin });
+export const Route = createFileRoute("/spin")({
+  component: Spin,
+  head: () => ({
+    meta: [
+      { title: "Fantastic — Roleta da sorte" },
+      { name: "description", content: "Gire a roleta da sorte da Fantastic e ganhe bónus em meticais." },
+      { property: "og:title", content: "Fantastic — Roleta da sorte" },
+      { property: "og:description", content: "Gire a roleta da sorte da Fantastic e ganhe bónus em meticais." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://alpharisee.lovable.app/spin" },
+      { name: "twitter:card", content: "summary_large_image" }
+    ],
+    links: [{ rel: "canonical", href: "https://alpharisee.lovable.app/spin" }],
+  }),
+});
 
 const VISUAL = [20, 250, 40, 500, 60, 1000, 80, 99];
 const COLORS = ["#fbbf24","#dc2626","#fbbf24","#dc2626","#fbbf24","#dc2626","#fbbf24","#dc2626"];

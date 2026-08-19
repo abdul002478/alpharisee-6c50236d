@@ -7,7 +7,21 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { Gift, Copy, Share2 } from "lucide-react";
 
-export const Route = createFileRoute("/invite")({ component: Invite });
+export const Route = createFileRoute("/invite")({
+  component: Invite,
+  head: () => ({
+    meta: [
+      { title: "Fantastic — Convide e ganhe 18%" },
+      { name: "description", content: "Partilhe o seu código de convite e ganhe 18% da primeira compra dos seus convidados." },
+      { property: "og:title", content: "Fantastic — Convide e ganhe 18%" },
+      { property: "og:description", content: "Partilhe o seu código de convite e ganhe 18% da primeira compra dos seus convidados." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://alpharisee.lovable.app/invite" },
+      { name: "twitter:card", content: "summary_large_image" }
+    ],
+    links: [{ rel: "canonical", href: "https://alpharisee.lovable.app/invite" }],
+  }),
+});
 
 function Invite() {
   const { user, profile, loading } = useAuth();
