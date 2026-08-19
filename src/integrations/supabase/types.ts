@@ -163,7 +163,6 @@ export type Database = {
           id: string
           invite_code: string
           invited_by: string | null
-          password_plain: string
           phone: string
           spin_chances: number
         }
@@ -175,7 +174,6 @@ export type Database = {
           id: string
           invite_code: string
           invited_by?: string | null
-          password_plain: string
           phone: string
           spin_chances?: number
         }
@@ -187,7 +185,6 @@ export type Database = {
           id?: string
           invite_code?: string
           invited_by?: string | null
-          password_plain?: string
           phone?: string
           spin_chances?: number
         }
