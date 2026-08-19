@@ -18,6 +18,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as MiningRouteImport } from './routes/mining'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SpinRouteImport } from './routes/spin'
 import { Route as WithdrawRouteImport } from './routes/withdraw'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
@@ -70,6 +71,11 @@ const SignupRoute = SignupRouteImport.update({
   path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SpinRoute = SpinRouteImport.update({
   id: '/spin',
   path: '/spin',
@@ -114,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/mcp': typeof McpRoute
   '/mining': typeof MiningRoute
   '/signup': typeof SignupRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/spin': typeof SpinRoute
   '/withdraw': typeof WithdrawRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -131,6 +138,7 @@ export interface FileRoutesByTo {
   '/mcp': typeof McpRoute
   '/mining': typeof MiningRoute
   '/signup': typeof SignupRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/spin': typeof SpinRoute
   '/withdraw': typeof WithdrawRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -149,6 +157,7 @@ export interface FileRoutesById {
   '/mcp': typeof McpRoute
   '/mining': typeof MiningRoute
   '/signup': typeof SignupRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/spin': typeof SpinRoute
   '/withdraw': typeof WithdrawRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -168,6 +177,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/mining'
     | '/signup'
+    | '/sitemap.xml'
     | '/spin'
     | '/withdraw'
     | '/.mcp/list-tools'
@@ -185,6 +195,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/mining'
     | '/signup'
+    | '/sitemap.xml'
     | '/spin'
     | '/withdraw'
     | '/.mcp/list-tools'
@@ -202,6 +213,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/mining'
     | '/signup'
+    | '/sitemap.xml'
     | '/spin'
     | '/withdraw'
     | '/.mcp/list-tools'
@@ -220,6 +232,7 @@ export interface RootRouteChildren {
   McpRoute: typeof McpRoute
   MiningRoute: typeof MiningRoute
   SignupRoute: typeof SignupRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SpinRoute: typeof SpinRoute
   WithdrawRoute: typeof WithdrawRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
@@ -293,6 +306,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/spin': {
       id: '/spin'
       path: '/spin'
@@ -348,6 +368,7 @@ const rootRouteChildren: RootRouteChildren = {
   McpRoute: McpRoute,
   MiningRoute: MiningRoute,
   SignupRoute: SignupRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SpinRoute: SpinRoute,
   WithdrawRoute: WithdrawRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
