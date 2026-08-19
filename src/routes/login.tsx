@@ -15,6 +15,18 @@ function safeNext(value: unknown): string | undefined {
 
 export const Route = createFileRoute("/login")({
   component: Login,
+  head: () => ({
+    meta: [
+      { title: "Fantastic — Entrar na sua conta" },
+      { name: "description", content: "Aceda à sua conta Fantastic para gerir investimentos, depósitos e saques." },
+      { property: "og:title", content: "Fantastic — Entrar na sua conta" },
+      { property: "og:description", content: "Aceda à sua conta Fantastic para gerir investimentos, depósitos e saques." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://alpharisee.lovable.app/login" },
+      { name: "twitter:card", content: "summary_large_image" }
+    ],
+    links: [{ rel: "canonical", href: "https://alpharisee.lovable.app/login" }],
+  }),
   validateSearch: (s: Record<string, unknown>): { next?: string } => ({ next: safeNext(s.next) }),
 });
 

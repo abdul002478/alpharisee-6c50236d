@@ -11,6 +11,18 @@ import logoAsset from "@/assets/fantastic-logo.png.asset.json";
 
 export const Route = createFileRoute("/signup")({
   component: Signup,
+  head: () => ({
+    meta: [
+      { title: "Fantastic — Criar conta grátis" },
+      { name: "description", content: "Crie a sua conta Fantastic com número de Moçambique e Gmail e ganhe uma chance na roleta." },
+      { property: "og:title", content: "Fantastic — Criar conta grátis" },
+      { property: "og:description", content: "Crie a sua conta Fantastic com número de Moçambique e Gmail e ganhe uma chance na roleta." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://alpharisee.lovable.app/signup" },
+      { name: "twitter:card", content: "summary_large_image" }
+    ],
+    links: [{ rel: "canonical", href: "https://alpharisee.lovable.app/signup" }],
+  }),
   validateSearch: (s: Record<string, unknown>): { ref?: string } => ({ ref: (s.ref as string) || "" }),
 });
 

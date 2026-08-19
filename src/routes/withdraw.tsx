@@ -9,7 +9,21 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/withdraw")({ component: Withdraw });
+export const Route = createFileRoute("/withdraw")({
+  component: Withdraw,
+  head: () => ({
+    meta: [
+      { title: "Fantastic — Sacar os seus ganhos" },
+      { name: "description", content: "Solicite saques a partir de 180 MT para e-Mola ou M-Pesa na Fantastic." },
+      { property: "og:title", content: "Fantastic — Sacar os seus ganhos" },
+      { property: "og:description", content: "Solicite saques a partir de 180 MT para e-Mola ou M-Pesa na Fantastic." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://alpharisee.lovable.app/withdraw" },
+      { name: "twitter:card", content: "summary_large_image" }
+    ],
+    links: [{ rel: "canonical", href: "https://alpharisee.lovable.app/withdraw" }],
+  }),
+});
 
 function Withdraw() {
   const { profile, refresh } = useAuth();

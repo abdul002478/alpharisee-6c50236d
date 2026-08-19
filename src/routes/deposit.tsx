@@ -9,7 +9,21 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Copy } from "lucide-react";
 
-export const Route = createFileRoute("/deposit")({ component: Deposit });
+export const Route = createFileRoute("/deposit")({
+  component: Deposit,
+  head: () => ({
+    meta: [
+      { title: "Fantastic — Depositar via e-Mola ou M-Pesa" },
+      { name: "description", content: "Faça depósitos na Fantastic com e-Mola ou M-Pesa e comece a investir a partir de 400 MT." },
+      { property: "og:title", content: "Fantastic — Depositar via e-Mola ou M-Pesa" },
+      { property: "og:description", content: "Faça depósitos na Fantastic com e-Mola ou M-Pesa e comece a investir a partir de 400 MT." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://alpharisee.lovable.app/deposit" },
+      { name: "twitter:card", content: "summary_large_image" }
+    ],
+    links: [{ rel: "canonical", href: "https://alpharisee.lovable.app/deposit" }],
+  }),
+});
 
 const ACCOUNTS = {
   emola: { number: "871144722", name: "ARGELIO MARIO JOSÉ" },
