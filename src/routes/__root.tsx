@@ -138,6 +138,7 @@ import { useEffect } from "react";
 import { AuthProvider } from "@/lib/auth-context";
 import { Toaster } from "@/components/ui/sonner";
 import { registerServiceWorker } from "@/lib/pwa";
+import { InstallPrompt } from "@/components/InstallPrompt";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
