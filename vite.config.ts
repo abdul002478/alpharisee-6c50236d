@@ -29,6 +29,8 @@ export default defineConfig({
         injectRegister: null,
         devOptions: { enabled: false },
         filename: "sw.js",
+        // TanStack Start emits the browser bundle to dist/client; the SW must live there.
+        outDir: "dist/client",
         // public/manifest.webmanifest is the source of truth.
         manifest: false,
         workbox: {
