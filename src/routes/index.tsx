@@ -9,8 +9,10 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { Clock, TrendingUp, Coins, MessageCircle, Info } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import logoAsset from "@/assets/fantastic-logo.png.asset.json";
 
 const WHATSAPP_MANAGER = "https://chat.whatsapp.com/KHn1AyGbd4o1nOg6Q0xtju";
+const APP_DOWNLOAD = "https://drive.google.com/file/d/1WUXRetodyJl94Gw9HqBj2vmsEcfCEoU2/view?usp=sharing";
 
 export const Route = createFileRoute("/")({
   component: Index,
