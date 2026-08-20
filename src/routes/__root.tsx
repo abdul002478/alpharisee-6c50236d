@@ -138,6 +138,7 @@ import { useEffect } from "react";
 import { AuthProvider } from "@/lib/auth-context";
 import { Toaster } from "@/components/ui/sonner";
 import { registerServiceWorker } from "@/lib/pwa";
+import { InstallPrompt } from "@/components/InstallPrompt";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
@@ -150,6 +151,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <Outlet />
+        <InstallPrompt />
         <Toaster richColors position="top-center" />
       </AuthProvider>
     </QueryClientProvider>
