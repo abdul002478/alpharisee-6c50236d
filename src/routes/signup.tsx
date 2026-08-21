@@ -7,7 +7,6 @@ import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
 import { Eye, EyeOff } from "lucide-react";
-import logoAsset from "@/assets/fantastic-logo.png.asset.json";
 
 export const Route = createFileRoute("/signup")({
   component: Signup,
@@ -63,7 +62,7 @@ function Signup() {
     <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
       <Card className="w-full max-w-md p-6 bg-gradient-card shadow-card border-border">
         <div className="flex items-center gap-2 mb-6">
-          <img src={logoAsset.url} alt="Logótipo Fantastic" className="w-12 h-12 rounded-xl object-cover" />
+          <img src="/icons/icon-192.png" alt="Logótipo Fantastic" className="w-12 h-12 rounded-xl object-cover" />
           <h1 className="text-2xl font-bold text-gold">Criar conta</h1>
         </div>
         <form onSubmit={submit} className="space-y-4">

@@ -9,7 +9,6 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { Clock, TrendingUp, Coins, MessageCircle, Info, Download } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import logoAsset from "@/assets/fantastic-logo.png.asset.json";
 
 const WHATSAPP_MANAGER = "https://chat.whatsapp.com/KHn1AyGbd4o1nOg6Q0xtju";
 const APP_DOWNLOAD = "https://drive.google.com/file/d/1WUXRetodyJl94Gw9HqBj2vmsEcfCEoU2/view?usp=sharing";
@@ -73,7 +72,7 @@ function Index() {
     <AppShell>
       <a href={APP_DOWNLOAD} target="_blank" rel="noopener noreferrer" className="block mb-4">
         <Card className="p-4 bg-card hover:bg-muted/40 transition flex items-center gap-3">
-          <img src={logoAsset.url} alt="Fantastic" className="w-12 h-12 rounded-lg object-cover" />
+          <img src="/icons/icon-192.png" alt="Fantastic" className="w-12 h-12 rounded-lg object-cover" />
           <div className="flex-1">
             <p className="text-sm font-bold text-foreground">Fantastic — Baixar aplicativo</p>
             <p className="text-[11px] text-muted-foreground">Toque para descarregar o app</p>
