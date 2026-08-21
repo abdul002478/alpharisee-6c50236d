@@ -10,7 +10,7 @@ import { toast } from "sonner";
 import { Clock, TrendingUp, Coins, MessageCircle, Info, Download } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
-const WHATSAPP_MANAGER = "https://chat.whatsapp.com/KHn1AyGbd4o1nOg6Q0xtju";
+const WHATSAPP_MANAGER = "https://whatsapp.com/channel/0029VbDetOfChq6DjwALzX0w";
 const APP_DOWNLOAD = "https://drive.google.com/file/d/1WUXRetodyJl94Gw9HqBj2vmsEcfCEoU2/view?usp=sharing";
 
 export const Route = createFileRoute("/")({
