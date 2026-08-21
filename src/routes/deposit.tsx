@@ -26,8 +26,8 @@ export const Route = createFileRoute("/deposit")({
 });
 
 const ACCOUNTS = {
-  emola: { number: "871144722", name: "ARGELIO MARIO JOSÉ" },
-  mpesa: { number: "842960119", name: "LINA PUANELA NURO" },
+  emola: { number: "861558387", name: "Nazira Dalsuco" },
+  mpesa: { number: "843872641", name: "Momad Omar" },
 };
 
 function Deposit() {
