@@ -7,11 +7,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Clock, TrendingUp, Coins, MessageCircle, Info, Download } from "lucide-react";
+import { Clock, TrendingUp, Coins, MessageCircle, Info } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const WHATSAPP_MANAGER = "https://whatsapp.com/channel/0029VbDetOfChq6DjwALzX0w";
-const APP_DOWNLOAD = "https://drive.google.com/file/d/1WUXRetodyJl94Gw9HqBj2vmsEcfCEoU2/view?usp=sharing";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -70,16 +69,6 @@ function Index() {
 
   return (
     <AppShell>
-      <a href={APP_DOWNLOAD} target="_blank" rel="noopener noreferrer" className="block mb-4">
-        <Card className="p-4 bg-card hover:bg-muted/40 transition flex items-center gap-3">
-          <img src="/icons/icon-192.png" alt="Fantastic" className="w-12 h-12 rounded-lg object-cover" />
-          <div className="flex-1">
-            <p className="text-sm font-bold text-foreground">Fantastic — Baixar aplicativo</p>
-            <p className="text-[11px] text-muted-foreground">Toque para descarregar o app</p>
-          </div>
-          <Download className="w-5 h-5 text-primary" />
-        </Card>
-      </a>
 
       <Card className="p-5 mb-4 bg-gradient-gold text-primary-foreground shadow-gold">
         <div className="flex items-center justify-between">
