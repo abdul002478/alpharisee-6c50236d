@@ -11,7 +11,6 @@ import { Clock, TrendingUp, Coins, MessageCircle, Info } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const WHATSAPP_MANAGER = "https://whatsapp.com/channel/0029VbDetOfChq6DjwALzX0w";
-const APP_DOWNLOAD = "https://drive.google.com/file/d/1WUXRetodyJl94Gw9HqBj2vmsEcfCEoU2/view?usp=sharing";
 
 export const Route = createFileRoute("/")({
   component: Index,
