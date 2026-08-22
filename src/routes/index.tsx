@@ -70,16 +70,6 @@ function Index() {
 
   return (
     <AppShell>
-      <a href={APP_DOWNLOAD} target="_blank" rel="noopener noreferrer" className="block mb-4">
-        <Card className="p-4 bg-card hover:bg-muted/40 transition flex items-center gap-3">
-          <img src="/icons/icon-192.png" alt="Fantastic" className="w-12 h-12 rounded-lg object-cover" />
-          <div className="flex-1">
-            <p className="text-sm font-bold text-foreground">Fantastic — Baixar aplicativo</p>
-            <p className="text-[11px] text-muted-foreground">Toque para descarregar o app</p>
-          </div>
-          <Download className="w-5 h-5 text-primary" />
-        </Card>
-      </a>
 
       <Card className="p-5 mb-4 bg-gradient-gold text-primary-foreground shadow-gold">
         <div className="flex items-center justify-between">
