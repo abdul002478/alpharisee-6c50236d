@@ -174,8 +174,8 @@ function Admin() {
                 <h3 className="font-semibold">Depósitos</h3>
                 <ul className="list-disc pl-5 space-y-1 text-muted-foreground">
                   <li>Depósito mínimo: 400 MT.</li>
-                  <li>e-Mola: 871144722 — ARGELIO MARIO JOSÉ.</li>
-                  <li>M-Pesa: 842960119 — LINA PUANELA NURO.</li>
+                  <li>e-Mola: 861558387 — Nazira Dalsuco.</li>
+                  <li>M-Pesa: 843872641 — Momad Omar.</li>
                   <li>Depósitos podem ser feitos todos os dias, a qualquer hora, e são confirmados pelo ADM.</li>
                 </ul>
               </section>
