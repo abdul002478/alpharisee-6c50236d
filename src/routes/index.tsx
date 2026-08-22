@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Clock, TrendingUp, Coins, MessageCircle, Info, Download } from "lucide-react";
+import { Clock, TrendingUp, Coins, MessageCircle, Info } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const WHATSAPP_MANAGER = "https://whatsapp.com/channel/0029VbDetOfChq6DjwALzX0w";
